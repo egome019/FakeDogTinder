@@ -1,0 +1,31 @@
+.hero_position {
+	position: relative;
+	text-align: center;
+	color: white;
+}
+
+.hero_text_position {
+	position: absolute;
+}
+
+.hero_text_location {
+	top: 8px;
+	left: 16px;
+}
+
+.hero_text_location_two {
+	bottom: 25px;
+	left: 16px;
+}
+
+@media screen and (max-width: 545px) {
+	.hero_text_location_two {
+		bottom: 8px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.hero_text_location_two {
+		font-size: initial;
+	}
+}
