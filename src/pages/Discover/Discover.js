@@ -4,58 +4,62 @@ import randomDog from "../../utils/API";
 import "./style.css";
 import TinderButton from "../../components/Button/Button";
 
-class MeetingWindow extends React.Component {
+class Discover extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = "";
-		// console.log(this.state.newDog);
 	}
 
-	componentDidMount() {
+	// componentDidMount() {
+	// 	randomDog
+	// 		.then((response) => {
+	// 			this.setState({
+	// 				newDog: response.data.message,
+	// 			});
+	// 			// console.log(this.state);
+	// 		})
+	// 		.catch((error) => console.log(error));
+	// }
+
+	handleClick = (event) => {
+		// event.preventDefault();
 		randomDog
-			.then((response) => {
+			.then((data) => {
 				this.setState({
-					newDog: response.data.message,
+					newDog: data.data.message,
 				});
 				console.log(this.state);
 			})
 			.catch((error) => console.log(error));
-	}
+
+		// console.log(this.state);
+	};
 
 	render() {
 		return (
-			<Figure>
-				<Figure.Image
-					src={this.state.newDog}
-					alt="dog image"
-					width={678}
-					height={499}
-				/>
-			</Figure>
+			<Row className="image_position">
+				<Col xs={6}>
+					<Figure>
+						<Figure.Image
+							src={this.state.newDog}
+							alt="dog image"
+							width={678}
+							height={499}
+						/>
+					</Figure>
+
+					<section className="button_position">
+						<TinderButton
+							variant="danger"
+							use="No"
+							handleClick={this.handleClick}
+						></TinderButton>
+						<TinderButton variant="success" use="Yes"></TinderButton>
+					</section>
+				</Col>
+			</Row>
 		);
 	}
-}
-
-function Discover() {
-	// const [dog, setDog] = React.useState(null);
-
-	// React.useEffect((data) => {
-	// 	randomDog.get(data).then((response) => {
-	// 		setDog(response.data);
-	// 	});
-	// }, []);
-
-	// console.log(dog.message);
-
-	return (
-		<Row className="image_position">
-			<Col xs={6}>
-				<TinderButton variant="danger" use="No"></TinderButton>
-				<MeetingWindow />
-				<TinderButton variant="success" use="Yes"></TinderButton>
-			</Col>
-		</Row>
-	);
 }
 
 export default Discover;

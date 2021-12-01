@@ -8,6 +8,7 @@ function TinderButton(props) {
 			as="input"
 			type="button"
 			value={props.use}
+			onClick={props.handleClick}
 		></Button>
 	);
 }

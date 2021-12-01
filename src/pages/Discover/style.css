@@ -1,3 +1,9 @@
 .image_position {
 	justify-content: center;
 }
+
+.button_position {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
