@@ -7,30 +7,28 @@ import TinderButton from "../../components/Button/Button";
 class Discover extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = "";
+		this.state = {
+			newDog: "",
+		};
+		this.getNewDog = this.getNewDog.bind(this);
 	}
 
-	// componentDidMount() {
-	// 	randomDog
-	// 		.then((response) => {
-	// 			this.setState({
-	// 				newDog: response.data.message,
-	// 			});
-	// 			// console.log(this.state);
-	// 		})
-	// 		.catch((error) => console.log(error));
-	// }
-
-	handleClick = (event) => {
-		// event.preventDefault();
+	getNewDog = () => {
 		randomDog
-			.then((data) => {
-				this.setState({
-					newDog: data.data.message,
-				});
-				console.log(this.state);
+			.then((response) => {
+				this.setState({ newDog: response.data.message });
+				// console.log(this.state);
 			})
 			.catch((error) => console.log(error));
+	};
+
+	componentDidMount() {
+		this.getNewDog();
+	}
+
+	handleClick = (event) => {
+		event.preventDefault();
+		this.getNewDog();
 
 		// console.log(this.state);
 	};
@@ -53,8 +51,12 @@ class Discover extends React.Component {
 							variant="danger"
 							use="No"
 							handleClick={this.handleClick}
-						></TinderButton>
-						<TinderButton variant="success" use="Yes"></TinderButton>
+						>
+							No
+						</TinderButton>
+						<TinderButton variant="success" use="Yes">
+							Yes
+						</TinderButton>
 					</section>
 				</Col>
 			</Row>

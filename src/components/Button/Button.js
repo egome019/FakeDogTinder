@@ -5,11 +5,12 @@ function TinderButton(props) {
 	return (
 		<Button
 			variant={props.variant}
-			as="input"
 			type="button"
 			value={props.use}
 			onClick={props.handleClick}
-		></Button>
+		>
+			{props.children}
+		</Button>
 	);
 }
 
