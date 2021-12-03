@@ -1,25 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import { Row, Col, Figure } from "react-bootstrap";
-import randomDog from "../../utils/API";
+import API from "../../utils/API";
 import "./style.css";
 import TinderButton from "../../components/Button/Button";
 
-class Discover extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			newDog: "",
-		};
-		this.getNewDog = this.getNewDog.bind(this);
-	}
-
-	getNewDog = () => {
-		randomDog
-			.then((response) => {
-				this.setState({ newDog: response.data.message });
-				// console.log(this.state);
-			})
-			.catch((error) => console.log(error));
+class Discover extends Component {
+	state = {
+		newDog: "",
+		newFriend: 0,
 	};
 
 	componentDidMount() {
@@ -27,10 +15,22 @@ class Discover extends React.Component {
 	}
 
 	handleClick = (event) => {
-		event.preventDefault();
+		const newState = { ...this.state };
+
+		this.setState(newState);
+
 		this.getNewDog();
 
 		// console.log(this.state);
+	};
+
+	getNewDog = () => {
+		API.randomDog()
+			.then((response) => {
+				this.setState({ newDog: response.data.message });
+				// console.log(this.state);
+			})
+			.catch((error) => console.log(error));
 	};
 
 	render() {
