@@ -15,6 +15,8 @@ class Discover extends Component {
 	}
 
 	handleClick = (event) => {
+		// if button yes is clicked the 1 in 5 will become new friend
+
 		const newState = { ...this.state };
 
 		this.setState(newState);
