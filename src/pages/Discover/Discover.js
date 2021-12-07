@@ -16,12 +16,39 @@ class Discover extends Component {
 
 	handleClick = (event) => {
 		// if button yes is clicked the 1 in 5 will become new friend
+		if (event.target.getAttribute("value") === "Yes") {
+			let newbies = this.state.newFriend;
+			const count = Math.random() * 5;
+			const match = () => {
+				if (count > 3) {
+					this.setState({ newFriend: newbies++ });
+				}
+			};
+			match();
+			// const newState = { ...this.state };
 
-		const newState = { ...this.state };
+			// console.log(newState);
 
-		this.setState(newState);
+			// this.setState(newState);
 
-		this.getNewDog();
+			console.log(this.state);
+
+			this.getNewDog();
+		} else {
+			// const newState = { ...this.state };
+
+			// this.setState(newState);
+
+			// console.log(this.state);
+
+			this.getNewDog();
+		}
+
+		// const newState = { ...this.state };
+
+		// this.setState(newState);
+
+		// this.getNewDog();
 
 		// console.log(this.state);
 	};
@@ -56,7 +83,11 @@ class Discover extends Component {
 						>
 							No
 						</TinderButton>
-						<TinderButton variant="success" use="Yes">
+						<TinderButton
+							variant="success"
+							use="Yes"
+							handleClick={this.handleClick}
+						>
 							Yes
 						</TinderButton>
 					</section>
