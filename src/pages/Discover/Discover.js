@@ -21,7 +21,7 @@ class Discover extends Component {
 			const count = Math.random() * 5;
 			const match = () => {
 				if (count > 3) {
-					this.setState({ newFriend: newbies++ });
+					this.setState({ newFriend: newbies + 1 });
 				}
 			};
 			match();
