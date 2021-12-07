@@ -35,22 +35,8 @@ class Discover extends Component {
 
 			this.getNewDog();
 		} else {
-			// const newState = { ...this.state };
-
-			// this.setState(newState);
-
-			// console.log(this.state);
-
 			this.getNewDog();
 		}
-
-		// const newState = { ...this.state };
-
-		// this.setState(newState);
-
-		// this.getNewDog();
-
-		// console.log(this.state);
 	};
 
 	getNewDog = () => {
