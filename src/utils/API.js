@@ -6,4 +6,10 @@ export default {
 	randomDog: function () {
 		return axios.get(BASEURL);
 	},
+	breedList: function () {
+		return axios.get("https://dog.ceo/api/breeds/list/all");
+	},
+	search: function (breed) {
+		return axios.get("https://dog.ceo/api/breeds/" + breed + "/images");
+	},
 };
