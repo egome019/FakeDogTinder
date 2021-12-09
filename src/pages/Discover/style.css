@@ -1,9 +1,14 @@
 .image_position {
 	justify-content: center;
+	text-align: center;
 }
 
 .button_position {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-around;
+}
+
+.spacing {
+	padding: 1rem;
 }
