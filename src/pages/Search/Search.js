@@ -7,15 +7,17 @@ import "./style.css";
 class Search extends Component {
 	state = {
 		newBreed: "",
-		breedList: [],
+		breedList: {},
 	};
 
 	componentDidMount() {
 		API.breedList()
 			.then((response) => {
+				// console.log(response.data.message);
 				this.setState({ breedList: response.data.message });
 			})
 			.catch((error) => console.log(error));
+		console.log(this.state);
 	}
 
 	getNewBreed = () => {
@@ -23,6 +25,7 @@ class Search extends Component {
 	};
 
 	render() {
+		let list = this.state;
 		return (
 			<Row className="container_flex">
 				<Col xs={6}>
@@ -30,10 +33,11 @@ class Search extends Component {
 						<h1>Search by Breed!</h1>
 					</section>
 					<section>
+						<Form.Label>Breed Name:</Form.Label>
 						<Form.Select aria-label="Breed Select">
-							{/* {this.state.breedList.map((breed) => {
+							{Object.keys(list.breedList).map((breed) => {
 								return <option key={breed.id}>{breed}</option>;
-							})} */}
+							})}
 						</Form.Select>
 					</section>
 					<Cards />
