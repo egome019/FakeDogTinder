@@ -17,11 +17,20 @@ class Search extends Component {
 				this.setState({ breedList: response.data.message });
 			})
 			.catch((error) => console.log(error));
-		console.log(this.state);
 	}
 
-	getNewBreed = () => {
+	handleChange = (e) => {
+		this.setState({ newBreed: e.target.value });
+	};
+
+	getNewBreed = (breed) => {
 		// API. based on the breed you select then you map for the cards
+		// let doggies = this.state.newBreed;
+		API.search(breed)
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((error) => console.log(error));
 	};
 
 	render() {
@@ -35,11 +44,12 @@ class Search extends Component {
 					<section>
 						<Form.Label>Breed Name:</Form.Label>
 						<Form.Select aria-label="Breed Select">
-							{Object.keys(list.breedList).map((breed) => {
-								return <option key={breed.id}>{breed}</option>;
+							{Object.keys(list.breedList).map((breed, i) => {
+								return <option key={i}>{breed}</option>;
 							})}
 						</Form.Select>
 					</section>
+					<section>{this.getNewBreed(list.newBreed)}</section>
 					<Cards />
 				</Col>
 			</Row>
