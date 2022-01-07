@@ -10,6 +10,6 @@ export default {
 		return axios.get("https://dog.ceo/api/breeds/list/all");
 	},
 	search: function (breed) {
-		return axios.get("https://dog.ceo/api/breeds/" + breed + "/images");
+		return axios.get("https://dog.ceo/api/breed/" + breed + "/images");
 	},
 };
