@@ -43,8 +43,14 @@ class Search extends Component {
 					</section>
 					<section>
 						<Form.Label>Breed Name:</Form.Label>
-						<Form.Select aria-label="Breed Select">
+						<Form.Select
+							aria-label="Breed Select"
+							placeholder="Select Dog Breed"
+							onChange={this.handleChange}
+						>
+							<option>Select Dog Breed</option>
 							{Object.keys(list.breedList).map((breed, i) => {
+								// console.log(list);
 								return <option key={i}>{breed}</option>;
 							})}
 						</Form.Select>
