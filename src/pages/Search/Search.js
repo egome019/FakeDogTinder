@@ -55,8 +55,10 @@ class Search extends Component {
 							})}
 						</Form.Select>
 					</section>
-					<section>{this.getNewBreed(list.newBreed)}</section>
-					<Cards />
+					<section>
+						{/* I need to place the response from the search call somewhere...perhaps local storage....need to think... */}
+						<Cards headShot={this.getNewBreed(list.newBreed)} />
+					</section>
 				</Col>
 			</Row>
 		);
