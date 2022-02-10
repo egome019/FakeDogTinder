@@ -8,6 +8,7 @@ class Search extends Component {
 	state = {
 		newBreed: "",
 		breedList: {},
+		randomCandidate: {},
 	};
 
 	componentDidMount() {
@@ -28,7 +29,9 @@ class Search extends Component {
 		// let doggies = this.state.newBreed;
 		API.search(breed)
 			.then((res) => {
-				console.log(res.data);
+				// console.log(res.data);
+
+				this.setState({ randomCandidate: res.data.message });
 			})
 			.catch((error) => console.log(error));
 	};
@@ -57,7 +60,15 @@ class Search extends Component {
 					</section>
 					<section>
 						{/* I need to place the response from the search call somewhere...perhaps local storage....need to think... */}
-						<Cards headShot={this.getNewBreed(list.newBreed)} />
+						{this.getNewBreed(list.newBreed)}
+						{console.log(list.randomCandidate[0])}
+						{Object.keys(list.randomCandidate).map((rando, i) => {
+							let imgSrc;
+							for (let index = 0; index < 10; index++) {
+								imgSrc = rando[index];
+							}
+							return <Cards key={i} headShot={imgSrc} />;
+						})}
 					</section>
 				</Col>
 			</Row>
